@@ -1,6 +1,5 @@
 package info.mrprogrammer.mvvm.data
 
-import dagger.hilt.android.qualifiers.ApplicationContext
 import info.mrprogrammer.mvvm.data.model.ResultModel
 import info.mrprogrammer.mvvm.domain.UseCase
 import info.mrprogrammer.mvvm.framework.FrameWork
