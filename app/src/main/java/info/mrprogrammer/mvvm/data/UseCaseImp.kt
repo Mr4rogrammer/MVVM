@@ -10,7 +10,8 @@ class UseCaseImp @Inject constructor(
     private val frameWork: FrameWork
 ) : UseCase {
     override suspend fun fetchData(): List<ResultModel> {
-        return service.getDataFromApi()
+        val result =  service.getDataFromApi()
+        return result.subList(0, result.size / 2)
     }
 
     override fun isInterNetConnected(): Boolean {
