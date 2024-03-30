@@ -1,7 +1,7 @@
 package info.mrprogrammer.mvvm.data
 
 import info.mrprogrammer.mvvm.data.interfaces.ApiService
-import info.mrprogrammer.mvvm.data.model.ResultModel
+import info.mrprogrammer.mvvm.domain.model.ResultModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Call

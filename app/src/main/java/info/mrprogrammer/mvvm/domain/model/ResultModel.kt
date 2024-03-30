@@ -1,4 +1,4 @@
-package info.mrprogrammer.mvvm.data.model
+package info.mrprogrammer.mvvm.domain.model
 
 class ResultModel {
     var id:String = ""

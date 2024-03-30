@@ -10,7 +10,7 @@ import info.mrprogrammer.mvvm.data.Repository
 import info.mrprogrammer.mvvm.data.Service
 import info.mrprogrammer.mvvm.data.interfaces.ApiService
 import info.mrprogrammer.mvvm.domain.Domain
-import info.mrprogrammer.mvvm.framework.FrameWorkImp
+import info.mrprogrammer.mvvm.framework.FrameWork
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -38,8 +38,8 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun getFrameWork(@ApplicationContext applicationContext: Context): FrameWorkImp {
-        return FrameWorkImp(applicationContext)
+    fun getFrameWork(@ApplicationContext applicationContext: Context): FrameWork {
+        return FrameWork(applicationContext)
     }
 
     @Provides

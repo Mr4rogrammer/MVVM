@@ -1,6 +1,6 @@
 package info.mrprogrammer.mvvm.data
 
-import info.mrprogrammer.mvvm.data.model.ResultModel
+import info.mrprogrammer.mvvm.domain.model.ResultModel
 import info.mrprogrammer.mvvm.domain.interfaces.RepositoryInterface
 import javax.inject.Inject
 

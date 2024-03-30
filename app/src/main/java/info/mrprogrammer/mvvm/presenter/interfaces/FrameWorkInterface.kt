@@ -1,5 +1,5 @@
 package info.mrprogrammer.mvvm.presenter.interfaces
 
-interface FrameWork {
+interface FrameWorkInterface {
     fun isInterNetConnected():Boolean
 }
