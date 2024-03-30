@@ -6,7 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import info.mrprogrammer.mvvm.data.RepositoryImp
+import info.mrprogrammer.mvvm.data.Repository
 import info.mrprogrammer.mvvm.data.Service
 import info.mrprogrammer.mvvm.data.interfaces.ApiService
 import info.mrprogrammer.mvvm.domain.Domain
@@ -44,13 +44,13 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun getRepository(service: Service): RepositoryImp {
-        return RepositoryImp(service)
+    fun getRepository(service: Service): Repository {
+        return Repository(service)
     }
 
     @Provides
     @Singleton
-    fun getDomain(repositoryImp: RepositoryImp):Domain {
-        return Domain(repositoryImp = repositoryImp)
+    fun getDomain(repositoryImp: Repository):Domain {
+        return Domain(repository = repositoryImp)
     }
 }

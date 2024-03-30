@@ -1,7 +1,7 @@
-package info.mrprogrammer.mvvm.domain
+package info.mrprogrammer.mvvm.domain.interfaces
 
 import info.mrprogrammer.mvvm.data.model.ResultModel
 
-interface Repository {
+interface RepositoryInterface {
     suspend fun fetchData():List<ResultModel>
 }
