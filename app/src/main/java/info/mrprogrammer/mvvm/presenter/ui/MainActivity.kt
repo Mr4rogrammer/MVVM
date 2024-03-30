@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import info.mrprogrammer.mvvm.databinding.ActivityMainBinding
 import info.mrprogrammer.mvvm.presenter.viewmodel.MainActivityViewModel
@@ -40,6 +39,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initializeFlow() {
+        viewModel.fetchData()
         lifecycleScope.launch {
             ensureActive()
             viewModel.resultModelList.collect {
