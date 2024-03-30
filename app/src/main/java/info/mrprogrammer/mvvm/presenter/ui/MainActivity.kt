@@ -39,16 +39,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initializeFlow() {
-        viewModel.fetchData()
         lifecycleScope.launch {
             ensureActive()
+            viewModel.fetchData()
             viewModel.resultModelList.collect {
                 withContext(Dispatchers.Main) {
                     root.result.text = ""
-                    if (it.isNotEmpty()) {
-                        it.forEach {
-                            root.result.append("${it.id}  ==  ${it.name} \n\n")
-                        }
+                    it.forEach {
+                        root.result.append("${it.id}  ==  ${it.name} \n\n")
                     }
                 }
             }

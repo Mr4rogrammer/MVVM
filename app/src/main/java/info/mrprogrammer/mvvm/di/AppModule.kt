@@ -6,9 +6,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import info.mrprogrammer.mvvm.data.RepositoryImp
 import info.mrprogrammer.mvvm.data.Service
-import info.mrprogrammer.mvvm.data.UseCaseImp
 import info.mrprogrammer.mvvm.data.interfaces.ApiService
+import info.mrprogrammer.mvvm.domain.Domain
 import info.mrprogrammer.mvvm.framework.FrameWorkImp
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -43,7 +44,13 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun getUseCase(service: Service, frameWorkImp: FrameWorkImp): UseCaseImp {
-        return UseCaseImp(service, frameWorkImp)
+    fun getRepository(service: Service): RepositoryImp {
+        return RepositoryImp(service)
+    }
+
+    @Provides
+    @Singleton
+    fun getDomain(repositoryImp: RepositoryImp):Domain {
+        return Domain(repositoryImp = repositoryImp)
     }
 }
