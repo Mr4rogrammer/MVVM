@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class Service @Inject constructor(private val apiService: ApiService) {
 
-    suspend fun getDataFromApi():List<ResultModel> {
+    suspend fun getDataFromApi(): List<ResultModel> {
         return withContext(Dispatchers.IO) {
             val call: Call<List<ResultModel>> = apiService.getObjects()
             val response = call.execute()
@@ -20,6 +20,5 @@ class Service @Inject constructor(private val apiService: ApiService) {
                 throw Exception("Unsuccessful response: ${response.code()}")
             }
         }
-
     }
 }

@@ -1,6 +1,7 @@
 package info.mrprogrammer.mvvm.presenter.viewmodel
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import info.mrprogrammer.mvvm.data.UseCaseImp
 import info.mrprogrammer.mvvm.data.model.ResultModel
@@ -8,12 +9,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainActivityViewModel @Inject constructor(private val useCaseImp: UseCaseImp):ViewModel() {
+class MainActivityViewModel @Inject constructor(private val useCaseImp: UseCaseImp) : ViewModel() {
 
-    private val _resultModelList= MutableStateFlow<List<ResultModel>>(listOf<ResultModel>())
+    private val _resultModelList = MutableStateFlow<List<ResultModel>>(listOf<ResultModel>())
     val resultModelList: StateFlow<List<ResultModel>> = _resultModelList.asStateFlow()
 
     private val _progressState = MutableStateFlow<Boolean>(false)
@@ -21,9 +23,11 @@ class MainActivityViewModel @Inject constructor(private val useCaseImp: UseCaseI
 
     fun fetchData() {
         if (useCaseImp.isInterNetConnected()) {
-            _progressState.update { true }
-            _resultModelList.update { useCaseImp.fetchData() }
-            _progressState.update { false }
+            viewModelScope.launch {
+                _progressState.update { true }
+                _resultModelList.update { useCaseImp.fetchData() }
+                _progressState.update { false }
+            }
         }
     }
 }
