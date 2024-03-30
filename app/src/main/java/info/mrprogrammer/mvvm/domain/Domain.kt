@@ -6,6 +6,6 @@ import javax.inject.Inject
 
 class Domain @Inject constructor(private val repositoryImp: RepositoryImp) {
     suspend fun fetchData():List<ResultModel> {
-        return repositoryImp.fetchDataFromApi()
+        return repositoryImp.fetchData()
     }
 }

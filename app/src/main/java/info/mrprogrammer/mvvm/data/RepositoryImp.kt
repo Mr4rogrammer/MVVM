@@ -5,7 +5,7 @@ import info.mrprogrammer.mvvm.domain.Repository
 import javax.inject.Inject
 
 class RepositoryImp @Inject constructor(private val service: Service):Repository {
-    override suspend fun fetchDataFromApi(): List<ResultModel> {
+    override suspend fun fetchData(): List<ResultModel> {
         return service.getDataFromApi()
     }
 }
